@@ -1,0 +1,7 @@
+.subckt amp-cs in vd gnd a out
+*.PININFO in:I vd:B gnd:B a:B out:O
+M1 out in gnd gnd nmos w=43u l=1u m=5
+M2 out a vd vd pmos w=479u l=1u m=10
+M3 a a vd vd pmos w=479u l=1u m=10
+.ends
+.end

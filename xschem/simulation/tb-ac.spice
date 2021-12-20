@@ -1,0 +1,54 @@
+**.subckt tb-ac
+x1 vd out a in GND amp-cs
+Vin in GND 0.761889 DC AC 1
+Vdd vd GND 1.8
+Ibias a GND 200u
+Cl out GND 3p m=1
+**** begin user architecture code
+
+.ac dec 200 1k 110Meg
+.control
+destroy all
+run
+plot db(out/in)
+.endc
+.end
+
+
+*.include /home/hugodg/hugodg/sky130_skel/minimal_libs/pshort.lib
+*.include /home/hugodg/hugodg/sky130_skel/minimal_libs/nshort.lib
+.lib /home/hugodg/skywater-pdk/libraries/sky130_fd_pr_ngspice/latest/models/sky130.lib.spice tt
+
+**** end user architecture code
+**.ends
+
+* expanding   symbol:  /home/hugodg/projects_sky130/microelectronic/amp-cs/xschem/amp-cs.sym # of
+*+ pins=5
+* sym_path: /home/hugodg/projects_sky130/microelectronic/amp-cs/xschem/amp-cs.sym
+* sch_path: /home/hugodg/projects_sky130/microelectronic/amp-cs/xschem/amp-cs.sch
+.subckt amp-cs  vd out a in gnd
+*.ipin in
+*.iopin vd
+*.iopin gnd
+*.iopin a
+*.opin out
+XM4 out in gnd gnd sky130_fd_pr__nfet_01v8 L=1 W=43 nf=5 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM5 out a vd vd sky130_fd_pr__pfet_01v8 L=1 W=479 nf=10 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+XM2 a a vd vd sky130_fd_pr__pfet_01v8 L=1 W=479 nf=10 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29'
++ pd='2*int((nf+1)/2) * (W/nf + 0.29)' ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W'
++ sa=0 sb=0 sd=0 mult=1 m=1
+**** begin user architecture code
+
+C0 A IN 1.92fF
+C1 IN vd 11.75fF
+C2 A vd 133.60fF
+
+**** end user architecture code
+.ends
+
+.GLOBAL GND
+.end

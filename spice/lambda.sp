@@ -14,11 +14,12 @@ Vds Vd 0 DC 0
 *VF Vs 0 DC 0
 
 *PMOSFET
-M1000 Vd Vg 0 0 pshort_model.0 w=7525.46u l=1u
+M1000 Vd Vg 0 0 pshort_model w=7525.46u l=1u
+*M1000 Vd Vg 0 0 pshort_model w=1u l=1u
 Vgg Vg 0 dc -1.3
 
 *NMOSFET
-*M1001 Vd Vg 0 0 nshort_model.0 w=339.13845u l=1u
+M1001 Vd Vg 0 0 nshort_model w=339.13845u l=1u
 *Vgg Vg 0 dc 0.72
 
 .end

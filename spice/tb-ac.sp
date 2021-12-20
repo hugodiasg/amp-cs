@@ -13,10 +13,6 @@ Vin	IN	0	0.7 AC 1
 Ibias	A	0	200u
 CL	OUT	0	3p
 
-*Parasitas extraídos do MAGIC
-C1 IN 0 11.75fF
-C2 OUT 0 15.86fF
-C3 Vd 0 42.87fF
 
 * cmd step	stop
 .ac	dec	200	1k	110Meg
